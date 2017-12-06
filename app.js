@@ -16,6 +16,7 @@ waitlist = [{
   email: "Jedi Master",
   id: "test2",}];
 
+app.use(express.static("assets"));
 app.get("/", (req, res)=>{ res.sendFile(path.join(__dirname, "home.html")); });
 app.get("/reserve", (req, res)=>{ res.sendFile(path.join(__dirname, "reserve.html")); });
 app.get("/tables", (req, res)=>{ res.sendFile(path.join(__dirname, "tables.html")); });
