@@ -1,0 +1,26 @@
+<script type="text/javascript"> //this goes at the end of the "make a new reservation page", the IDs need to match the submission form
+    $("#PLACEHOLDER").on("click", function(event) {
+      event.preventDefault();
+      let newReserve = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        id: $("#id").val().trim()
+      };
+
+      $.post("/api/new", newReserve)
+      .done((data)=>{
+        console.log(data);
+        alert("Yay! You are officially booked!");
+      });
+    });
+</script>
+
+<script type="text/javascript"> //this goes at the end of the tables page, needs IDs to tell it where to append the reservation/waitlist data and each "append(index.id)" needs html formatting
+  $.get("/api/reservations", (data)=>{
+    for (let index of data) $("#PLACEHOLDER").append(index.id);
+  });
+  $.get("/api/waitlist", (data)=>{
+    for (let index of data) $("#PLACEHOLDER").append(index.id);
+  });
+</script>
