@@ -1,13 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tables Page</title>
+	<title>Reservation Page</title>
 
+	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="assets/style.css"></head>
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
 <body>
 
 	<div class="container">
@@ -15,12 +18,11 @@
 		<div class="jumbotron">
 			<h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
 			<hr>
-			<h2 class="text-center">Current Reservations and Waiting List</h2>
+			<h2 class="text-center">Make your reservation</h2>
 			<br>
 
 			<div class="text-center">
 				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-				<a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
 				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 			</div>
 		</div>
@@ -28,46 +30,52 @@
 		<div class="row">
 			<div class="col-lg-12">
 
-
+				<!-- Reservation Page -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4 class="panel-title">Current Reservations</h4>
+						<h4 class="panel-title">Table Reservation</h4>
 					</div>
-					<div class="panel-body" id="tableSection">
+					<div class="panel-body">
+
+						<form role="form">
+
+							<div class="form-group">
+								<label for="">Name</label>
+								<input type="text" class="form-control" id="reserve_name">
+							</div>
+
+							<div class="form-group">
+								<label for="">Phone Number</label>
+								<input type="text" class="form-control" id="reserve_phone">
+							</div>
+
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="text" class="form-control" id="reserve_email">
+							</div>
+
+							<div class="form-group">
+								<label for="">Unique ID</label>
+								<input type="text" class="form-control" id="reserve_uniqueID">
+							</div>
+
+							<button type="submit" class="btn btn-primary submit">Submit</button>
+						</form>
+
 					</div>
 				</div>
 
-
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">Waiting List</h4>
-					</div>
-					<div class="panel-body" id="waitlistSection">
-					</div>
-				</div>
 			</div>
 		</div>
 
 
 	    <footer class="footer">
 	      <div class="container">
-	      	<p>Control Panel</p>
-	        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/reservations">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
+	        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
 	      </div>
 	    </footer>
 
 	</div>
 
-<script type="text/javascript">
-  $.get("/api/reservations", (data)=>{
-    for (let index of data) $("#tableSection").append(index.id);
-  });
-  $.get("/api/waitlist", (data)=>{
-    for (let index of data) $("#waitlistSection").append(index.id);
-  });
-
-</script>
-
 </body>
-
 </html>
