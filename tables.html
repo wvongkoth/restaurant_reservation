@@ -60,7 +60,7 @@
 
 <script type="text/javascript">
   $.get("/api/reservations", (data)=>{
-    for (let index of data) $("#tableSection").append('<div> <h4>' + index.id + '</h4></div>');
+    for (let index of data) $("#tableSection").append(index.id);
   });
   $.get("/api/waitlist", (data)=>{
     for (let index of data) $("#waitlistSection").append(index.id);
