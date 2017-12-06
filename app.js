@@ -22,7 +22,6 @@ app.get("/tables", (req, res)=>{ res.sendFile(path.join(__dirname, "tables.html"
 
 app.get("/api/reservations", function(req, res) { return res.json(reservations); });
 app.get("/api/waitlist", function(req, res) { return res.json(waitlist); });
-//app.get("/api/clear", function(req, res) { reservations = [], waitlist = []; });
 
 app.post("/api/new", (req, res)=>{
   let newReserve = req.body;
