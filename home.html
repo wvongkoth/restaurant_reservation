@@ -34,7 +34,12 @@
     </footer>
 
 	</div>
-
+<script type="text/javascript"><
+	$("#clear").on("click", function(event) {
+      event.preventDefault();
+      $.post("/api/clear")
+    });
+</script>
 
 </body>
 </html>
