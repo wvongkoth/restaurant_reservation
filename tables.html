@@ -60,10 +60,10 @@
 
 <script type="text/javascript">
   $.get("/api/reservations", (data)=>{
-    for (let index of data) $("#tableSection").append(index.id);
+    for (let index of data) $("#tableSection").append(`<div><h3><span class="label label-primary">${data.indexOf(index) + 1}</span> | ${index.id}</h3></div>`);
   });
   $.get("/api/waitlist", (data)=>{
-    for (let index of data) $("#waitlistSection").append(index.id);
+    for (let index of data) $("#waitlistSection").append(`<div><h3><span class="label label-primary">${data.indexOf(index) + 1}</span> | ${index.id}</h3></div>`);
   });
   $("#clear").on("click", function(event) {
       event.preventDefault();
